@@ -1,0 +1,14 @@
+{
+	"authors": [
+		"IP2Location"
+	],
+	"copyright": "Copyright © 2023, IP2Location",
+	"dependencies": {
+		"urld": "~>2.1.1"
+	},
+	"description": "IP2Location.io D Library",
+	"homepage": "https://github.com/ip2location/ip2location-io-d",
+	"license": "MIT",
+	"name": "ip2location-io-d",
+	"targetType": "library"
+}
