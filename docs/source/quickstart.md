@@ -143,6 +143,8 @@ int main() {
 			writefln("proxy => is_web_proxy: %s", proxy["is_web_proxy"].boolean);
 			writefln("proxy => is_web_crawler: %s", proxy["is_web_crawler"].boolean);
 			writefln("proxy => is_residential_proxy: %s", proxy["is_residential_proxy"].boolean);
+			writefln("proxy => is_consumer_privacy_network: %s", proxy["is_consumer_privacy_network"].boolean);
+			writefln("proxy => is_enterprise_private_network: %s", proxy["is_enterprise_private_network"].boolean);
 			writefln("proxy => is_spammer: %s", proxy["is_spammer"].boolean);
 			writefln("proxy => is_scanner: %s", proxy["is_scanner"].boolean);
 			writefln("proxy => is_botnet: %s", proxy["is_botnet"].boolean);
