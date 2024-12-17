@@ -44,6 +44,7 @@ int main() {
 		writefln("ads_category: %s", ("ads_category" in result) ? result["ads_category"].str : "");
 		writefln("ads_category_name: %s", ("ads_category_name" in result) ? result["ads_category_name"].str : "");
 		writefln("is_proxy: %s", ("is_proxy" in result) ? result["is_proxy"].boolean : false);
+		writefln("fraud_score: %d", ("fraud_score" in result) ? result["fraud_score"].integer : 0);
 		
 		// continent addon
 		if ("continent" in result) {
