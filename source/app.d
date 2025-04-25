@@ -1,12 +1,14 @@
 import std.stdio;
 import ipgeolocation;
 import domainwhois;
+import hosteddomain;
 import configuration;
 
 int main() {
 	// Query for IP geolocation
 	auto ip = "8.8.8.8";
 	auto apiKey = "YOUR_API_KEY";
+	
 	auto lang = "es";
 	
 	auto conf = new Configuration(apiKey);
@@ -214,6 +216,25 @@ int main() {
 	writefln("NormalText: %s", whois.getNormalText("xn--tst-qla.de"));
 	writefln("DomainName: %s", whois.getDomainName("https://www.example.com/exe"));
 	writefln("DomainExtension: %s", whois.getDomainExtension("example.com"));
+	
+	auto hd = new HostedDomain(conf);
+	
+	auto result3 = hd.lookup(ip);
+	
+	if ("ip" in result3) {
+		writefln("ip: %s", result3["ip"].str);
+		writefln("total_domains: %d", result3["total_domains"].integer);
+		writefln("page: %d", result3["page"].integer);
+		writefln("per_page: %d", result3["per_page"].integer);
+		writefln("total_pages: %d", result3["total_pages"].integer);
+		writefln("domains: %s", result3["domains"]);
+	}
+	else if ("error" in result3) {
+		writefln("Error: %s", result3["error"]["error_message"]);
+	}
+	else {
+		writeln("Error: Unknown error.");
+	}
 	
 	return 0;
 }

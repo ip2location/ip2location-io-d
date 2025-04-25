@@ -4,9 +4,9 @@ import std.json;
 import std.conv;
 import configuration;
 
-class IPGeolocation {
+class HostedDomain {
 	private Configuration _Config;
-	private const string _BaseURL = "https://api.ip2location.io/";
+	private const string _BaseURL = "https://domains.ip2whois.com/domains";
 	private const string _Format = "json";
 	private const string _Source = "sdk-d-iplio";
 	
@@ -16,11 +16,8 @@ class IPGeolocation {
 	}
 	
 	// Query web service for geolocation info
-	public auto lookup(const string ipAddress, const string lang = "") {
-		auto url = _BaseURL ~ "?key=" ~ _Config.getAPIKey().encode ~ "&ip=" ~ ipAddress.encode ~ "&format=" ~ _Format ~ "&source=" ~ _Source ~ "&source_version=" ~ _Config.getVersion();
-		if (lang != "") {
-			url = url ~ "&lang=" ~ lang.encode;
-		}
+	public auto lookup(const string ipAddress, const int page = 1) {
+		auto url = _BaseURL ~ "?key=" ~ _Config.getAPIKey().encode ~ "&ip=" ~ ipAddress.encode ~ "&page=" ~ to!string(page) ~ "&format=" ~ _Format ~ "&source=" ~ _Source ~ "&source_version=" ~ _Config.getVersion();
 		string content = "";
 		auto client = HTTP(url); // using "HTTP" instead of just "get" due to the need to read the page content when HTTP Status <> 200
 		client.onReceive = (ubyte[] data) {

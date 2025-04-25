@@ -20,7 +20,7 @@ To install this library using dub:
 
 You can make a geolocation data lookup for an IP address as below:
 
-``` d
+```d
 import std.stdio;
 import ipgeolocation;
 import configuration;
@@ -318,6 +318,45 @@ int main() {
 	auto conf = new Configuration("");
 	auto whois = new DomainWhois(conf);
 	writefln("DomainExtension: %s", whois.getDomainExtension("example.com"));
+	
+	return 0;
+}
+```
+
+### Lookup IP Address Hosted Domains Data
+
+You can lookup hosted domains information as below:
+
+```d
+import std.stdio;
+import hosteddomain;
+import configuration;
+
+int main() {
+	// Query for IP hosted domains
+	auto ip = "8.8.8.8";
+	auto apiKey = "YOUR_API_KEY";
+	
+	auto conf = new Configuration(apiKey);
+	
+	auto hd = new HostedDomain(conf);
+	
+	auto result = hd.lookup(ip);
+	
+	if ("ip" in result) {
+		writefln("ip: %s", result["ip"].str);
+		writefln("total_domains: %d", result["total_domains"].integer);
+		writefln("page: %d", result["page"].integer);
+		writefln("per_page: %d", result["per_page"].integer);
+		writefln("total_pages: %d", result["total_pages"].integer);
+		writefln("domains: %s", result["domains"]);
+	}
+	else if ("error" in result) {
+		writefln("Error: %s", result["error"]["error_message"]);
+	}
+	else {
+		writeln("Error: Unknown error.");
+	}
 	
 	return 0;
 }

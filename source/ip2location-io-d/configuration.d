@@ -1,5 +1,5 @@
 class Configuration {
-	private const string _apiVersion = "1.0.0";
+	private const string _apiVersion = "1.1.0";
 	private string _apiKey = "";
 	
 	// constructor
