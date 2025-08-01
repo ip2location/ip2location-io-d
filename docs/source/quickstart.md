@@ -121,6 +121,9 @@ int main() {
 			writefln("time_zone_info => current_time: %s", timezone["current_time"].str);
 			writefln("time_zone_info => gmt_offset: %d", timezone["gmt_offset"].integer);
 			writefln("time_zone_info => is_dst: %s", timezone["is_dst"].boolean);
+			writefln("time_zone_info => abbreviation: %s", timezone["abbreviation"].boolean);
+			writefln("time_zone_info => dst_start_date: %s", timezone["dst_start_date"].boolean);
+			writefln("time_zone_info => dst_end_date: %s", timezone["dst_end_date"].boolean);
 			writefln("time_zone_info => sunrise: %s", timezone["sunrise"].str);
 			writefln("time_zone_info => sunset: %s", timezone["sunset"].str);
 		}
