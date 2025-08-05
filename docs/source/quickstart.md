@@ -152,6 +152,7 @@ int main() {
 			writefln("proxy => is_spammer: %s", proxy["is_spammer"].boolean);
 			writefln("proxy => is_scanner: %s", proxy["is_scanner"].boolean);
 			writefln("proxy => is_botnet: %s", proxy["is_botnet"].boolean);
+			writefln("proxy => is_bogon: %s", proxy["is_bogon"].boolean);
 		}
 	}
 	else if ("error" in result) {
